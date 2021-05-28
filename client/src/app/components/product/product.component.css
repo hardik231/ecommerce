@@ -1,0 +1,9 @@
+.footer-pagination {
+  float: right;
+  margin-top: 40px;  
+}
+.cart-btn {
+  width: 100%;
+  color: white;
+  background-color:#3b4a6b;
+}

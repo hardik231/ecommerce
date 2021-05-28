@@ -1,0 +1,32 @@
+<section class="shop_section layout_padding">
+    <div class="container">
+        <div class="row">
+        
+            <div class="col-sm-6 col-xl-3">
+                <div class="box">
+                
+                    <div class="img-box">
+                    <img src="{{imageUrl}}/{{product.imageUrl}}" alt="">
+                    </div>
+                    <div class="detail-box">
+                    <h6>
+                        {{product.name}}
+                    </h6>
+                    </div>
+                    <div class="new">
+                    <span>
+                        {{product.price}}$
+                    </span>
+                    </div>
+                
+                    <button class = "cart-btn" (click)="addToCart()" >Add to Cart</button>
+                </div>
+            </div>
+        </div>        
+    </div>
+</section>
+
+<strong><h4>Product Description</h4></strong>
+        <p>{{product.description}}</p>
+        <h4>Units In Stock</h4>
+        <p>{{product.unitsInStock}}</p>
