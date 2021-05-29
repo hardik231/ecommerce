@@ -6,19 +6,18 @@ exports.createProduct = (req, res) => {
     const newProduct = new Product({
         name: req.body.name,
         category: req.body.category,
+        categoryNumber: req.body.categoryNumber,
         price: req.body.price,
         description: req.body.description,
         unitsInStock: req.body.unitsInStock,
-        imageUrl: req.body.imageUrl,
-        
+        imageUrl: req.file.imageUrl        
     })
 
     newProduct.save((err, product) => {
         if(product) 
             res.status(200).send(product)
         else
-            res.status(400).json("could not create product")
-        
+            res.status(400).json('could not create product '+err)        
     })
 }
 
@@ -57,18 +56,18 @@ exports.getProducts = (req, res) => {
     //     .limit(pageSize)
     // }
 
-    Product.find({}, (err, products) => {
-         if(products) {
-            if(products)
-                res.send(products)
-    }})
+    Product.find({}).sort({dateCreated:-1}).then((products) => {
+            if(products) {
+                   res.send(products)
+            }
+        })
 }
 
 
 exports.getProductsByKeyword = (req, res) => {
     const regex = new RegExp(req.params.keyword, 'i')
 
-    Product.find({name: regex}).then(
+    Product.find({name: regex}).sort({dateCreated:-1}).then(
         products => {
             if(products)
                 res.send(products)
@@ -78,7 +77,7 @@ exports.getProductsByKeyword = (req, res) => {
 exports.getProductsByCategory = (req, res) => {
     const categoryId = req.params.categoryId
 
-    Category.findOne({_id: categoryId}).then(
+    Category.findOne({_id: categoryId}).sort({dateCreated:-1}).then(
 
         category => {
 
@@ -92,13 +91,26 @@ exports.getProductsByCategory = (req, res) => {
 )}
 
 
-
 exports.updateProducts = (req, res) => {
-    Product.updateMany({}, (err, products) => {
+    const update = {name: req.body.name, description: req.body.description, imageUrl: req.body.imageUrl, unitsInStock: req.body.unitsInStock, price: req.body.price}
+    Product.updateMany(update, (err, products) => {
         if(products)
             res.send(products)
     })
 }
+
+
+exports.partialUpdate = (req, res) => {
+    const productId = req.params.productId
+
+    const update = {name: req.body.name, description: req.body.description}
+    Product.findByIdAndUpdate(productId, update, (err, product) => {
+            if(product) 
+                res.send(product)
+        }
+    )
+}
+
 
 exports.deleteProduct = (req, res) => {
     

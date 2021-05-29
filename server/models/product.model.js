@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-
  
 const productSchema = new mongoose.Schema({
   name: {
@@ -28,7 +27,8 @@ const productSchema = new mongoose.Schema({
   },
   imageUrl: {
     type: String,
-    required: true
+    required: true,
+    unique: true
   },
   dateCreated: {
     type: Date,
