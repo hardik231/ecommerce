@@ -15,6 +15,7 @@ import  { NgxPaginationModule} from 'ngx-pagination'
 })
 export class ProductComponent implements OnInit {
 
+
   products: Product[] = []
   imageUrl = ''
 
@@ -32,7 +33,6 @@ export class ProductComponent implements OnInit {
   ngOnInit(): void {
   this.route.paramMap.subscribe( () => {
       this.handleProducts()
-      
   })
   }
 
@@ -73,12 +73,14 @@ export class ProductComponent implements OnInit {
 
   addToCart(theProduct: Product) {
     
+  
     console.log(`Adding to cart: ${theProduct.name}, ${theProduct.price}`);
 
     // TODO ... do the real work
     const theCartItem = new CartItem(theProduct);
 
     this.cartService.addToCart(theCartItem);
+
   }
 
  

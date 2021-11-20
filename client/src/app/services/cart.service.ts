@@ -50,6 +50,7 @@ export class CartService {
       // increment the quantity
       if(existingCartItem.quantity < theCartItem.unitsIntStock) {
         existingCartItem.quantity++;
+        --theCartItem.unitsIntStock;
       }
       else if(existingCartItem.quantity >= theCartItem.unitsIntStock)
         window.alert('Can not add item to the cart because the Item is out of Stock')

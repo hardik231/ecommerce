@@ -245,6 +245,8 @@ export class CheckoutComponent implements OnInit {
         next: response => {
           alert(`Your order has been received.\nOrder tracking number: ${response}`);
 
+          
+
           // reset cart
           this.resetCart();
 

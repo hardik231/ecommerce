@@ -13,21 +13,19 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav">
-            <li class="nav-item active">
-              <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
-            </li>                        
+            <div class="user_option-box">
+              <a href="">
+                <i class="fa fa-user" aria-hidden="true"></i>
+              </a>
+              <a routerLink="/cart-details">
+                <i class="fa fa-cart-plus" aria-hidden="true"></i>
+              </a>
+  
+              <app-search></app-search>
+          
+            </div>                         
           </ul>
-          <div class="user_option-box">
-            <a href="">
-              <i class="fa fa-user" aria-hidden="true"></i>
-            </a>
-            <a routerLink="/cart-details">
-              <i class="fa fa-cart-plus" aria-hidden="true"></i>
-            </a>
-
-            <app-search></app-search>
-        
-          </div>
+         
         </div>
       </nav>
     </div>

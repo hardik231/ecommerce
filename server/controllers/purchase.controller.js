@@ -60,3 +60,4 @@ exports.deletePurchase = (req, res) => {
             res.json('deleted successfully')
     })
 }
+

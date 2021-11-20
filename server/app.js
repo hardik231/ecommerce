@@ -9,7 +9,7 @@ const countryRouter = require('./routers/country.router')
 const stateRouter = require('./routers/states.router')
 const purchase = require('./routers/purchase.router')
 
-const port = 3000 | process.env.PORT
+const PORT = 3000 | process.env.PORT
 
 app.use(express.static("public"));
 app.use('/uploads', express.static('./uploads'));
@@ -23,4 +23,4 @@ app.use('/api/v1/states', stateRouter)
 app.use('/api/v1/countries', countryRouter)
 app.use('/api/v1/checkout/purchase', purchase)
 
-app.listen(port, () => console.log("server started on port "+port))
+app.listen(PORT, () => console.log("server started on port "+PORT))
