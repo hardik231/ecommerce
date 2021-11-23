@@ -1,27 +1,24 @@
 <section class="shop_section layout_padding">
     
-        <div class="row">        
+      <div class="row">        
         <div class="col-sm-6 col-xl-3"  *ngFor="let product of products | paginate: { itemsPerPage: pageSize, currentPage: pageNumber } ">
-            <div class="box">
+              <div class="box">
               <a routerLink="/products/{{product._id}}">
                 <div class="img-box">
-                  <img src="{{imageUrl}}/{{product.imageUrl}}" alt="">
+                  <img src="{{connectionService.url}}/{{product.imageUrl}}" alt="">
                 </div>
                 <div class="detail-box">
                   <h6>
-                    {{product.name}}
+                    {{product.name.slice(0,70)}}...
                   </h6>
-                  <h6>
-                    
-                    <span>
-                      
-                    </span>
-                  </h6>
+                  <br>
+                  <h5>
+                  </h5>
                 </div>
                 <div class="new">
-                <span>
+                  <span>
                     {{product.price}}$
-                </span>
+                  </span>
                 </div>
               </a>
               
@@ -31,7 +28,7 @@
           </div>
         <!-- if products empty then display a message-->
         <div *ngIf="products.length == 0">
-            <p>No Products Found</p>
+            <p>Sorry currenntly there are no products available</p>
         </div>
 </div>
 <div class="footer-pagination">

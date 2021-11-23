@@ -1,6 +1,6 @@
 const Product = require('../models/product.model')
 const Category = require('../models/product-category.model')
-
+const {} = require('./product-image.controller')
 exports.createProduct = (req, res) => {
 
     const newProduct = new Product({
@@ -10,7 +10,7 @@ exports.createProduct = (req, res) => {
         price: req.body.price,
         description: req.body.description,
         unitsInStock: req.body.unitsInStock,
-        imageUrl: req.file.imageUrl        
+        imageUrl: 'uploads/'+ req.file.filename      
     })
 
     newProduct.save((err, product) => {

@@ -14,12 +14,9 @@ export class CartDetailsComponent implements OnInit {
   cartItems: CartItem[] = [];
   totalPrice: number = 0;
   totalQuantity: number = 0;
-  imageUrl = ''
-  //imageUrl = '/image'
 
   constructor(private cartService: CartService,
     private connectionService: ConnectionService) {
-      this.imageUrl = connectionService.imageUrl;
      }
 
   ngOnInit(): void {

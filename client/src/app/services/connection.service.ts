@@ -8,10 +8,8 @@ import { ProductCategory } from '../common/product-category';
 })
 export class ConnectionService {
 
-  //private url = '/api'
-  //public imageUrl = 'http://54.209.113.76:3000'
-   public imageUrl = 'http://localhost:3000'
-   private url = 'http://localhost:3000/api/v1'
+   url = 'http://localhost:3000'
+
 
   constructor(private httpClient: HttpClient) {}
 

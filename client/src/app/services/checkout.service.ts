@@ -8,7 +8,7 @@ import { Purchase } from '../common/purchase';
 })
 export class CheckoutService {
 
-  private purchaseUrl = 'http://localhost:3000/api/v1';
+  private purchaseUrl = 'http://localhost:3000';
   //private purchaseUrl = '/api';
 
   constructor(private httpClient: HttpClient) { }

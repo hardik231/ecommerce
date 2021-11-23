@@ -14,13 +14,12 @@ import { FormBuilder, FormControl, FormGroup, Validators, ReactiveFormsModule, F
 export class ProductDetailsComponent implements OnInit {
 
   product: Product
-  imageUrl = ''
-  //imageUrl = '/image'
-  
+  url = ''
+
   constructor(private connectionService: ConnectionService,
               private route: ActivatedRoute,
               private cartService: CartService) { 
-                this.imageUrl = connectionService.imageUrl;
+                this.url = connectionService.url;                     
               }
 
   ngOnInit(): void { 

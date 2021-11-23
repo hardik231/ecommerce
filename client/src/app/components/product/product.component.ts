@@ -17,19 +17,18 @@ export class ProductComponent implements OnInit {
 
 
   products: Product[] = []
-  imageUrl = ''
 
   pageSize = 8
   pageNumber = 1
-  
-  //imageUrl = '/image'
-  
+
+
+
   constructor(private connectionService: ConnectionService,
               private route: ActivatedRoute,
               private cartService: CartService) { 
-                this.imageUrl = connectionService.imageUrl;  
+                
               }
-  
+              
   ngOnInit(): void {
   this.route.paramMap.subscribe( () => {
       this.handleProducts()
