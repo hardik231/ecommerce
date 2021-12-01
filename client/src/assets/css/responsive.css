@@ -1,3 +1,4 @@
+
 @media (max-width: 1300px) {
   .footer_container {
     border-radius: 250px 0 0 0;
@@ -26,7 +27,6 @@
   .custom_nav-container .navbar-nav {
     padding-top: 15px;
   }
-
 
   .custom_nav-container .navbar-nav .nav-item .nav-link {
     padding: 5px 25px;
@@ -79,3 +79,5 @@
     max-width: 1170px;
   }
 }
+
+@media (max-width)

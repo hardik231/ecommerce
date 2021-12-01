@@ -15,7 +15,6 @@ const purchaseSchema = mongoose.Schema({
         required: true
     },
 
-
     shippingAddressStreet: {
         type: String,
         required: true

@@ -9,8 +9,7 @@ import { Purchase } from '../common/purchase';
 export class CheckoutService {
 
   private purchaseUrl = 'http://localhost:3000';
-  //private purchaseUrl = '/api';
-
+  
   constructor(private httpClient: HttpClient) { }
 
   placeOrder(purchase: Purchase): Observable<any> {

@@ -5,7 +5,6 @@ require('./db/connect')
 
 const productRouter = require('./routers/product.router')
 const productCategoryRouter = require('./routers/product-category.router')
-const countryRouter = require('./routers/country.router')
 const stateRouter = require('./routers/states.router')
 const purchase = require('./routers/purchase.router')
 
@@ -18,9 +17,8 @@ app.use(express.urlencoded({extended: true}))
 app.use(cors())
 
 app.use('/products', productRouter)
-app.use('/categories', productCategoryRouter)
-app.use('/states', stateRouter)
-app.use('/countries', countryRouter)
+//app.use('/categories', productCategoryRouter)
+//app.use('/states', stateRouter)
 app.use('/checkout/purchase', purchase)
 
 app.listen(PORT, () => console.log("server started on port "+PORT))

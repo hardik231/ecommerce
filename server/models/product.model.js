@@ -9,10 +9,6 @@ const productSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  categoryNumber : {
-    type: Number,
-    required: true
-  },
   price: {
     type: Number,
     required: true
@@ -26,9 +22,8 @@ const productSchema = new mongoose.Schema({
     required: true
   },
   imageUrl: {
-    type: [String],
-    required: true,
-    unique: true
+    type: String,
+    required: true
   },
   dateCreated: {
     type: Date,

@@ -32,9 +32,9 @@ export class ConnectionService {
     return this.httpClient.get<Product[]>(productUrl)
   }
 
-  getProductsByCategory(categoryId: string) {
+  getProductsByCategory(category: string) {
     
-    return this.httpClient.get<Product[]>(`${this.url}/products/categories/${categoryId}`)
+    return this.httpClient.get<Product[]>(`${this.url}/products/categories/${category}`)
   }
 
   getCategories() {

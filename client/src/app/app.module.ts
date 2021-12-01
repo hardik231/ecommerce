@@ -15,17 +15,19 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { ConnectionService } from './services/connection.service';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { HomeComponent } from './components/home/home.component';
  
 const routes : Routes =  [
-  { path:'products', component: ProductComponent },
-  { path:'category', component: ProductComponent },
+  {path:'products', component: ProductComponent},
+  {path:'categories', component: ProductComponent },
   {path:'search/:keyword', component: ProductComponent},
-  { path:'checkout', component: CheckoutComponent },
+  {path:'checkout', component: CheckoutComponent },
   {path: 'cart-details', component: CartDetailsComponent},
-  { path:'category/:categoryId', component: ProductComponent },
-  { path:'products/:productId', component: ProductDetailsComponent },
+  {path:'products/category/:category', component: ProductComponent },
+  {path:'products/:productId', component: ProductDetailsComponent },
   { path:'', redirectTo: '/products', pathMatch: 'full'},
-  { path:'**', component: NotFoundComponent}
+  {path:'**', component: NotFoundComponent}
 ]
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ const routes : Routes =  [
     SearchComponent,
     CartDetailsComponent,
     CheckoutComponent,
-    HeaderComponent
+    HeaderComponent,
+    FooterComponent,
+    HomeComponent
   ],
   imports: [
     RouterModule.forRoot(routes),

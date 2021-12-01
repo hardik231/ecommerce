@@ -17,11 +17,8 @@ export class ProductComponent implements OnInit {
 
 
   products: Product[] = []
-
   pageSize = 8
   pageNumber = 1
-
-
 
   constructor(private connectionService: ConnectionService,
               private route: ActivatedRoute,
@@ -56,9 +53,9 @@ export class ProductComponent implements OnInit {
   listProducts() {
     const flag : boolean = this.route.snapshot.paramMap.has('categoryId');
     if(flag) {
-      const categoryId = this.route.snapshot.paramMap.get('categoryId')
+      const category = this.route.snapshot.paramMap.get('category')
       
-      return this.connectionService.getProductsByCategory(categoryId).subscribe(
+      return this.connectionService.getProductsByCategory(category).subscribe(
         data => this.products = data
       )
     }

@@ -1,16 +1,14 @@
 const Product = require('../models/product.model')
-const Category = require('../models/product-category.model')
-const {} = require('./product-image.controller')
+
 exports.createProduct = (req, res) => {
 
     const newProduct = new Product({
         name: req.body.name,
         category: req.body.category,
-        categoryNumber: req.body.categoryNumber,
         price: req.body.price,
-        description: req.body.description,
+        description:     req.body.description,
         unitsInStock: req.body.unitsInStock,
-        imageUrl: 'uploads/'+ req.file.filename      
+        imageUrl:  'uploads/' + req.file.originalname,
     })
 
     newProduct.save((err, product) => {
@@ -31,10 +29,7 @@ exports.createProducts = (req, res) => {
         })
 }
 
-
-
 exports.getProduct = (req, res) => {
-
 
     Product.findById(req.params.productId, (err, product) => {
         if(!product)
@@ -75,21 +70,41 @@ exports.getProductsByKeyword = (req, res) => {
 }
 
 exports.getProductsByCategory = (req, res) => {
-    const categoryId = req.params.categoryId
+    const category = req.params.category
 
-    Category.findOne({_id: categoryId}).sort({dateCreated:-1}).then(
+    Product.find({category: category}).sort({dateCreated:-1}).then(
 
-        category => {
-
-                Product.find({categoryNumber: category.categoryNumber}).then(
-                    products => {
-                        if(products) 
-                            res.send(products)
-                    }
-                )
-        }
+        products => {
+                if(products)  
+                      res.send(products)
+                }
+                
 )}
 
+
+
+exports.getAllProductsCategories = (req, res) => {
+    const categories = new Set();
+    const newCategories = []
+
+    Product.find().then(
+        products => {
+            if(products) {
+                for(let i = 0; i < products.length; i++) {
+                    if(categories.has(products[i].category) == false) {
+                        categories.add(products[i].category);
+                    }
+                }
+
+                for(let item of categories.values()) {
+                    newCategories.push(item);
+                    categories.delete(item);
+                }
+                res.send(newCategories);
+            }
+        }
+    )
+}
 
 exports.updateProducts = (req, res) => {
     const update = {name: req.body.name, description: req.body.description, imageUrl: req.body.imageUrl, unitsInStock: req.body.unitsInStock, price: req.body.price}

@@ -1,25 +1,54 @@
-<section class="shop_section layout_padding">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-6 col-xl-3">
-                <div class="box">
-                    <div class="img-box">
-                    <img src="{{url}}/{{product.imageUrl}}" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="detail-box">
+<div class="details-class">
+    <div class="detail-box">
+    <div class="images-box">
+            
+        <img src="{{url}}/{{product.imageUrl}}">
+
+    </div>        
+    <div class="info-box">
             <h6>
                 {{product.name}}
             </h6>
-            </div>
-            <div class="new">
-            <span>
-                Price: {{product.price}}$
-            </span>
-            </div>
         
-            <button class = "cart-btn" (click)="addToCart()" >Add to Cart</button>
+            Price: &#8377;{{product.price}}
+            <br>
+            <br>
+                <button class = "cart-btn1" (click)="addToCart()" >Add to Cart</button>
+                <br>
+                <button class = "cart-btn2">Buy Now</button>
+            <br>
+            <br>
+    <div class="items">
+        <label>Quantity:</label>
+
+        <div class="">
+
+        </div>
+        <div class="row no-gutters">
+            <div class="col">
+                <button>
+                    
+                    <img src="../../../assets/images/plus.png">
+                </button>
+            </div>
+
+            <div class="col ml-4 mr-2">
+            </div>
+
+            <div class="col">
+                <button>
+                    <img src="../../../assets/images/minus.png">
+                </button>
+            </div>
+
+            <div class="col-8"></div>
+        </div>
+        
     </div>
-</section>
+    </div>
+    </div>
+    <div class="description-box">
+        <h5><b>About this item:</b></h5>
+        {{product.description}}
+    </div>
+</div>

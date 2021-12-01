@@ -13,11 +13,11 @@
 
                     <tr *ngFor="let tempCartItem of cartItems">
                         <td>
-                            <img src="{{tempCartItem.imageUrl}}" class="img-responsive" width="150px" />
+                            <img src="{{connectionService.url}}/{{tempCartItem.imageUrl}}" class="img-responsive" width="150px" />
                         </td>
                         <td>
                             <p>{{ tempCartItem.name }}</p>
-                            <p>{{ tempCartItem.price | currency: 'USD' }}</p>
+                            <p>&#8377;{{ tempCartItem.price}}</p>
                         </td>
                         <td>
                             <div class="items">
