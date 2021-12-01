@@ -8,8 +8,7 @@ import { ProductCategory } from '../common/product-category';
 })
 export class ConnectionService {
 
-   url = 'http://localhost:3000'
-
+   url = 'api'
 
   constructor(private httpClient: HttpClient) {}
 
@@ -40,6 +39,5 @@ export class ConnectionService {
   getCategories() {
     return this.httpClient.get<ProductCategory[]>(`${this.url}/categories`)
   }
-
 
 }
