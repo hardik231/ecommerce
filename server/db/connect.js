@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 //const url = "mongodb://127.0.0.1:27017/fullstack"
-const url = "mongodb+srv://hardik-parmar:Comp@231@cluster0.0mw70.mongodb.net/mystore?retryWrites=true&w=majority"
+const url = "mongodb+srv://hardik-parmar:Comp@231@cluster0.0mw70.mongodb.net/ecommerceDB?retryWrites=true&w=majority"
 
 mongoose.connect(url, { useNewUrlParser: true},
     err => {

@@ -3,19 +3,26 @@ import { BehaviorSubject, Subject } from 'rxjs';
 import { CartItem } from '../common/cart-item';
 import { Product } from '../common/product';
 import { Router } from '@angular/router'
+import { ConnectionService } from './connection.service';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class CartService {
+
   cartItems: CartItem[] = [];
+  products: Product[] = []
 
   totalPrice: Subject<number> = new BehaviorSubject<number>(0);
   totalQuantity: Subject<number> = new BehaviorSubject<number>(0);
   storage: Storage = sessionStorage;
   // storage: Storage = localStorage;
 
-  constructor(private route: Router) { 
+  constructor(private route: Router, 
+              private httpClient: HttpClient,
+              private connectionService: ConnectionService) { 
 
       // read data from storage
       let data = JSON.parse(this.storage.getItem('cartItems'));
@@ -29,42 +36,41 @@ export class CartService {
 
   }
 
-  addToCart(theCartItem: CartItem) {
-
-    // check if we already have the item in our cart
+   addToCart(theCartItem: CartItem) {
+        // check if we already have the item in our cart
     let alreadyExistsInCart: boolean = false;
     let existingCartItem: CartItem = undefined;
 
-    if(theCartItem.unitsIntStock > 0) {
+    if(theCartItem.unitsIntStock >= 0) {
 
     if (this.cartItems.length > 0) {
       // find the item in the cart based on item id
-
       existingCartItem = this.cartItems.find( tempCartItem => tempCartItem._id === theCartItem._id );
-
       // check if we found it
       alreadyExistsInCart = (existingCartItem != undefined);
     }
 
     if (alreadyExistsInCart) {
       // increment the quantity
-      if(existingCartItem.quantity < theCartItem.unitsIntStock) {
+      if(existingCartItem.quantity < theCartItem.unitsIntStock)
         existingCartItem.quantity++;
-        --theCartItem.unitsIntStock;
-      }
-      else if(existingCartItem.quantity >= theCartItem.unitsIntStock)
+      else
         window.alert('Can not add item to the cart because the Item is out of Stock')
-        this.route.navigateByUrl("/products")
     }
     else {
       // just add the item to the array
-      this.cartItems.push(theCartItem);
+    this.cartItems.push(theCartItem);
     }
-
     // compute cart total price and total quantity
     this.computeCartTotals();
   }
+  else {
+    window.alert('Can not add item to the cart because the Item is out of Stock')
+    // var nav = this.route.url.endsWith('/products')
+    // if(nav == false)
+    //   this.route.navigateByUrl("/products")
   }
+}
 
   computeCartTotals() {
 
@@ -128,4 +134,8 @@ export class CartService {
     }
   }
 
+  removeAll() { 
+    this.cartItems = [];
+    this.computeCartTotals();
+  }
 }

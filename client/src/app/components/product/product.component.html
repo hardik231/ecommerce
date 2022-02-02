@@ -17,19 +17,21 @@
                 </div>
                 <div class="new">
                   <span>
-                    &#8377;{{product.price}} 
+                    &#8377;{{product.price}}
                   </span>
                 </div>
               </a>
               
-              <button class = "cart-btn" (click)="addToCart(product)" >Add to Cart</button>
-            
+              <div *ngIf="product.unitsInStock == 0">
+                <button class="cart-btn" >Out Of Stock</button>
+              </div>
+                
             </div>
           </div>
         <!-- if products empty then display a message-->
         <div *ngIf="products.length == 0">
             <p>Sorry currenntly there are no products available</p>
-        </div>
+        </div>  
 </div>
 <div class="footer-pagination">
     <pagination-controls (pageChange)="pageNumber = $event"></pagination-controls>

@@ -1,4 +1,3 @@
-import { NumberValueAccessor } from '@angular/forms';
 import { Product } from './product';
 
 export class CartItem {

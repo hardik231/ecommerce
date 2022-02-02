@@ -5,21 +5,31 @@
 }
 
 .details-class .detail-box {
-    margin-bottom: 100px;
 }
-.details-class .detail-box .images-box {
-    width: 30%;
+.details-class .images-box {
+    margin-inline-start: 10px;
+    width: 20%;
     float: left;
 }
-.details-class .detail-box .images-box  img{
-    width: 60%;
-    height: 50%;
+.details-class .images-box  img{
+    width: 100%;
+    height: auto;
 }
-.details-class .detail-box .infobox{
+.details-class .detail-box .info-box {
+    margin-left: 0px;
     width: 70%;
-    float: right;
 }
-.details-class .description-box {
+.details-class .detail-box .info-box .name-box {
+    width: 80%;
+}
+.details-class .detail-box .info-box .items {
+    margin-block-start: 10px;
+}
+.details-class  .description-box {
+    margin-top: 100px;
+    margin-inline-start: 10px;
+    margin-inline-end: 10px;
+    
 }
 .cart-btn1 {
     width: 20%;

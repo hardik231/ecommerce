@@ -6,7 +6,8 @@ export class Purchase {
     firstName: string
     lastName: string
     email: string
-    
+    phone: number
+
     shippingAddressStreet: string
     shippingAddressCity: string
     shippingAddressState: string
@@ -23,9 +24,8 @@ export class Purchase {
     creditCardNameOnCard: string
     creditCardNumber: number
     creditCardSecurityCode: number
-    // creditCardExpirationDate: number
-    // creditCardExpirationYear: number
-    
+    creditCardExpirationMonth: number
+    creditCardExpirationYear: number
 
     orderItems: OrderItem[]
 

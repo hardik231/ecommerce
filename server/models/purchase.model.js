@@ -14,6 +14,10 @@ const purchaseSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    phone: {
+        type: Number,
+        required: true
+    },
 
     shippingAddressStreet: {
         type: String,
@@ -24,10 +28,6 @@ const purchaseSchema = mongoose.Schema({
         required: true
     },
     shippingAddressState: {
-        type: String,
-        required: true
-    },
-    shippingAddressCountry: {
         type: String,
         required: true
     },
@@ -48,16 +48,10 @@ const purchaseSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    billingAddressCountry: {
-        type: String,
-        required: true
-        
-    },
     billingAddressZipCode: {
         type: Number,
         required: true
     },
-
 
 
     orderItems: [Object],

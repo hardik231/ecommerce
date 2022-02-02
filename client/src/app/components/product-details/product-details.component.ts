@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CartItem } from 'src/app/common/cart-item';
 import { Product } from 'src/app/common/product';
 import { CartService } from 'src/app/services/cart.service';
@@ -18,6 +18,7 @@ export class ProductDetailsComponent implements OnInit {
 
   constructor(private connectionService: ConnectionService,
               private route: ActivatedRoute,
+              private router: Router,
               private cartService: CartService) { 
                 this.url = connectionService.url;                     
               }
@@ -39,12 +40,23 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   addToCart() {
-    console.log(`Adding to cart: ${this.product.name}, ${this.product.price}`);
+     console.log(`Adding to cart: ${this.product.name}, ${this.product.price}`);
     const theCartItem = new CartItem(this.product);
-    this.cartService.addToCart(theCartItem);    
+     this.cartService.addToCart(theCartItem)
 }
-  checkout() {
 
+  incrementQuantity() {
+    const tempCartItem = new CartItem(this.product);
+    this.cartService.addToCart(tempCartItem);
   }
 
+  decrementQuantity() {
+    const tempCartItem = new CartItem(this.product)
+    this.cartService.decrementQuantity(tempCartItem);
+  }
+
+  checkout() {  
+    this.addToCart();
+    this.router.navigateByUrl('/checkout');
+  }
 }

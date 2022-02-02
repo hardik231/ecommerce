@@ -8,36 +8,36 @@ import { ProductCategory } from '../common/product-category';
 })
 export class ConnectionService {
 
-   url = 'api'
+  url = 'http://localhost:3000'
+  //url = 'api'
 
   constructor(private httpClient: HttpClient) {}
 
  
   getProduct(productId: String) {
     
-    const productUrl = `${this.url}/products/${productId}`
+    const productUrl = `/products/${productId}`
     
     return this.httpClient.get<Product>(productUrl)
   }
 
   getProducts(pageNumber: Number, pageSize: Number) {
-   return this.httpClient.get<Product[]>(`${this.url}/products`)
+   return this.httpClient.get<Product[]>(`/products`)
   }
   
   getProductsByKeyword(keyword: string) {
     
-    const productUrl = `${this.url}/products/search/${keyword}`
+    const productUrl = `products/search/${keyword}`
     
     return this.httpClient.get<Product[]>(productUrl)
   }
 
-  getProductsByCategory(category: string) {
-    
-    return this.httpClient.get<Product[]>(`${this.url}/products/categories/${category}`)
+  getProductsByCategory(category: string) { 
+    return this.httpClient.get<Product[]>(`/products`)
   }
 
   getCategories() {
-    return this.httpClient.get<ProductCategory[]>(`${this.url}/categories`)
+    return this.httpClient.get<ProductCategory[]>(`/products/getAllCategories`)
   }
 
 }

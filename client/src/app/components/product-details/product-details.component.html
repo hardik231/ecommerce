@@ -1,50 +1,44 @@
 <div class="details-class">
-    <div class="detail-box">
     <div class="images-box">
-            
         <img src="{{url}}/{{product.imageUrl}}">
-
-    </div>        
+    </div>
+    <div class="detail-box">        
     <div class="info-box">
+        <div class="name-box">
             <h6>
                 {{product.name}}
             </h6>
-        
             Price: &#8377;{{product.price}}
-            <br>
-            <br>
-                <button class = "cart-btn1" (click)="addToCart()" >Add to Cart</button>
-                <br>
-                <button class = "cart-btn2">Buy Now</button>
-            <br>
-            <br>
-    <div class="items">
-        <label>Quantity:</label>
-
-        <div class="">
-
         </div>
-        <div class="row no-gutters">
-            <div class="col">
-                <button>
-                    
-                    <img src="../../../assets/images/plus.png">
-                </button>
-            </div>
-
-            <div class="col ml-4 mr-2">
-            </div>
-
-            <div class="col">
-                <button>
-                    <img src="../../../assets/images/minus.png">
-                </button>
-            </div>
-
-            <div class="col-8"></div>
-        </div>
+        <br>
         
+        <div class="btn-class" *ngIf="product.unitsInStock > 0">
+        <div class="btn-grp">
+            <button class="cart-btn1" (click)="addToCart()" >Add to Cart</button>
+            <br>
+            <button class="cart-btn2" (click)="checkout()">Buy Now</button>
+        </div>
+        <div class="items">
+            <label>Quantity:</label>
+
+            <div class="row no-gutters">
+                <div class="col">
+                    <button (click) = "incrementQuantity()">
+                        <img src="../../../assets/images/plus.png">
+                    </button>
+                </div>
+
+                <div class="col">
+                    <button (click) = "decrementQuantity()">
+                        <img src="../../../assets/images/minus.png">
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
+    <ng-template #elseBlock>
+        <h3>Out Of Stock</h3>
+    </ng-template>
     </div>
     </div>
     <div class="description-box">

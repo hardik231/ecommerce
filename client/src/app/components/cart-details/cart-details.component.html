@@ -12,8 +12,8 @@
                     </tr>
 
                     <tr *ngFor="let tempCartItem of cartItems">
-                        <td>
-                            <img src="{{connectionService.url}}/{{tempCartItem.imageUrl}}" class="img-responsive" width="150px" />
+                        <td routerLink="/products/{{tempCartItem._id}}">
+                            <img  src="{{connectionService.url}}/{{tempCartItem.imageUrl}}"  class="img-responsive" width="150px" />
                         </td>
                         <td>
                             <p>{{ tempCartItem.name }}</p>
@@ -58,7 +58,10 @@
                             <p>Total Quantity: {{ totalQuantity }}</p>
                             <p>Shipping: FREE</p>
                             <p>Total Price: {{ totalPrice | currency: 'USD' }}</p>
-                            <a routerLink="/checkout" class="btn btn-primary">Checkout</a>
+                            <a routerLink="/checkout" class="btn btn-primary">Checkout</a>  
+                            <br>
+                            <br>
+                            <button class="btn2 btn-primary" (click)="removeAll()">Empty cart</button>
                         </td>
                     </tr>
 

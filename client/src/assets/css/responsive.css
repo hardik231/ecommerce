@@ -72,7 +72,11 @@
 
 @media (max-width: 420px) {}
 
-@media (max-width: 376px) {}
+@media (max-width: 376px) {
+  .details-class.detail-box.info-box.btn-grp {
+    width: 80%;
+  }  
+}
 
 @media (min-width: 1200px) {
   .container {

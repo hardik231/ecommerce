@@ -16,7 +16,7 @@ import  { NgxPaginationModule} from 'ngx-pagination'
 export class ProductComponent implements OnInit {
 
 
-  products: Product[] = []
+  products: Product[] = [] 
   pageSize = 8
   pageNumber = 1
 
@@ -77,6 +77,10 @@ export class ProductComponent implements OnInit {
 
     this.cartService.addToCart(theCartItem);
 
+  }
+
+  outOfStock() {
+    
   }
 
  

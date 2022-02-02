@@ -8,3 +8,17 @@
 }
 
     
+.btn2.btn-primary {
+    padding: 5px;
+    border-color: #f0d43a;
+    background-color: #f0d43a;
+    text-decoration: none;
+    color: white;
+    border-radius: 3px;
+}
+
+ table {
+    border-radius: 5px;
+}
+
+    

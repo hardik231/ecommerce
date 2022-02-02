@@ -7,3 +7,7 @@
   color: white;
   background-color:#3b4a6b;
 }
+
+.shop_section-layout_padding {
+  margin-inline-start: 10px;
+}

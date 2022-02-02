@@ -28,6 +28,9 @@ const productSchema = new mongoose.Schema({
   dateCreated: {
     type: Date,
     default: new Date(),
+  },
+  isOutOfStock: {
+    type: Boolean,
   }
 })
 

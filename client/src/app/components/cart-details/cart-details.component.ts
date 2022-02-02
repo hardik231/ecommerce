@@ -3,6 +3,8 @@ import { CartItem } from 'src/app/common/cart-item';
 import { CartService } from 'src/app/services/cart.service';
 import { FormBuilder, FormControl, FormGroup, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ConnectionService } from 'src/app/services/connection.service';
+import { Product } from 'src/app/common/product';
+import { ProductComponent } from '../product/product.component';
 
 @Component({
   selector: 'app-cart-details',
@@ -16,7 +18,7 @@ export class CartDetailsComponent implements OnInit {
   totalQuantity: number = 0;
 
   constructor(private cartService: CartService,
-    private connectionService: ConnectionService) {
+              private connectionService: ConnectionService) {
      }
 
   ngOnInit(): void {
@@ -52,5 +54,9 @@ export class CartDetailsComponent implements OnInit {
 
   remove(theCartItem: CartItem) {
     this.cartService.remove(theCartItem);
+  }
+
+  removeAll() {
+    this.cartService.removeAll();
   }
 }

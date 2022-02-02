@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
-import { Country } from '../common/country';
-import { map } from 'rxjs/operators';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { State } from '../common/state';
+import { City } from '../common/city';
                                            
 @Injectable({
   providedIn: 'root'
@@ -11,22 +10,17 @@ import { State } from '../common/state';
 export class FormService {
 
   private url = 'http://localhost:3000'
-  
+  //private url = 'api'
   
   constructor(private httpClient: HttpClient) { }
 
-  getCountries(): Observable<Country[]> {
-
-    return this.httpClient.get<Country[]>(`${this.url}/countries`)
+  getStates(): Observable<State[]> {
+      return this.httpClient.get<State[]>(`/states/getAllStates`); 
   }
 
-  getStates(theCountryCode: string): Observable<State[]> {
-
-    // search url
-    const searchStatesUrl = `${this.url}/states/India`;
-    return this.httpClient.get<State[]>(searchStatesUrl)
-  }
-
+  getCities(stateName: string): Observable<City[]> {
+    return this.httpClient.get<City[]>(`/states/getCities?stateName=${stateName}`)
+  }                                                                             
 
   getCreditCardMonths(startMonth: number): Observable<number[]> {
 
